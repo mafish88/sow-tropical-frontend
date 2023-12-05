@@ -20,7 +20,7 @@ const HomePage = () => {
          <li>Indoor Ornimentals</li>
           <ul>
             <li>
-              <Link to="/PlantsPage">Explore our plants</Link>
+              <Link to="/plants">Explore our plants</Link>
             </li>
           </ul>
         </li>
