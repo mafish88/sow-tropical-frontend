@@ -44,14 +44,15 @@ function PlantsPage() {
     <div>
       <h1>Tropical and Exotic Fruit Trees</h1>
       <div className="cards-container">
+     
         {plants?.map((plants) => (
           
           <PlantsCard
             key={plants._id}
 
-            species={plants.species}
-            genus={plants.genus}
-            pollination={plants.pollination}
+            species={plants.species || plants.name}
+            genus={plants.genus || plants.scientificName}
+            pollination={plants.pollination || plants.propergation}
           />
         ))}
       </div>
@@ -64,6 +65,7 @@ function PlantsPage() {
                 <input type="text" id="genus" />
                 <label htmlFor="pollination">Pollination</label>
                 <input type="text" id="pollination" />
+               
                 <button type="submit">Submit</button>
             </form>
         </div>
