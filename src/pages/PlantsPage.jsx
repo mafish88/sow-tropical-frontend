@@ -64,8 +64,8 @@ function PlantsPage() {
                 <input type="text" id="species" />
                 <label htmlFor="genus">Genus</label>
                 <input type="text" id="genus" />
-                <label htmlFor="pollination">Pollination</label>
-                <input type="text" id="pollination" />
+                <label htmlFor="propagation">Propagation</label>
+                <input type="text" id="propagation" />
                 <button type="submit">Submit</button>
             </form>
         </div>
