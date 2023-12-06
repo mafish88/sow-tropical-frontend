@@ -19,9 +19,9 @@ function PlantsPage() {
 
  function handleSubmit(event) {
         event.preventDefault();
-        const name = event.target.name.value;
-        const scientificName = event.target.scientificName.value;
-        const description = event.target.description.value;
+        const name = event.target.species.value;
+        const scientificName = event.target.genus.value;
+        const description = event.target.pollination.value;
         const plant = { name, scientificName, description };
         fetch("https://final-project-mf.nn.r.appspot.com/plants", {
             method: "POST",
@@ -52,11 +52,12 @@ function PlantsPage() {
 
             species={plants.species || plants.name}
             genus={plants.genus || plants.scientificName}
-            pollination={plants.pollination || plants.propergation}
+            pollination={plants.pollination || plants.propergation || plants.description}
           />
         ))}
       </div>
       <div>
+      
             <h1>Add Plant</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="species">Species</label>
@@ -65,7 +66,6 @@ function PlantsPage() {
                 <input type="text" id="genus" />
                 <label htmlFor="pollination">Pollination</label>
                 <input type="text" id="pollination" />
-               
                 <button type="submit">Submit</button>
             </form>
         </div>

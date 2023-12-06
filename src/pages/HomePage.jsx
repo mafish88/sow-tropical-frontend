@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 
 const HomePage = () => {
   return (
+    <div className="backround-image">
     <div className="home-page">
       <h1>Sow Tropical</h1>
       
@@ -28,7 +29,7 @@ const HomePage = () => {
     <Footer>
       <small>Copyright © 2023 || all rights reserved </small>
     </Footer>
-
+    </div>
     </div>
   );
 };
