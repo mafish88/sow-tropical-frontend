@@ -6,9 +6,9 @@ import { Form, FormGroup, Label, Input, Button, Row } from "reactstrap";
 // fetch data from api
 
 function PlantsPage() {
-const [plants, setPlants] = React.useState([]);
+  const [plants, setPlants] = React.useState([]);
 
-// this is the fetch request to the backend to GET the plants and sets the state of the plants
+  // this is the fetch request to the backend to GET the plants and sets the state of the plants
   useEffect(() => {
     fetch("https://final-project-mf.nn.r.appspot.com/plants")
       .then((response) => response.json())
@@ -23,7 +23,8 @@ const [plants, setPlants] = React.useState([]);
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({            // this is the body of the request for (req.body)
+      body: JSON.stringify({
+        // this is the body of the request for (req.body)
         type,
         dateUpdated: currentDate,
       }),
@@ -34,7 +35,7 @@ const [plants, setPlants] = React.useState([]);
         console.error(error);
       });
   }
-  
+
   function handleFertilize(plantId) {
     updateFeed(plantId, "fertilizer");
   }
@@ -42,16 +43,17 @@ const [plants, setPlants] = React.useState([]);
   function handleWater(plantId) {
     updateFeed(plantId, "water");
   }
-// this is the function to handle the submit of the form to add a new plant to the database and the page 
+  // this is the function to handle the submit of the form to add a new plant to the database and the page
   function handleSubmit(event) {
     event.preventDefault();
     const plant = {
-     name: event.target.species.value,
-     scientificName: event.target.genus.value,
-     description: event.target.propagation.value,
-    }
-   
-// this is the fetch request to the backend to POST the new plant- my CRUD
+      name: event.target.species.value,
+      scientificName: event.target.genus.value,
+      description: event.target.propagation.value,
+      photo: event.target.photo.value,
+    };
+
+    // this is the fetch request to the backend to POST the new plant- my CRUD
     fetch("https://final-project-mf.nn.r.appspot.com/plants", {
       method: "POST",
       headers: {
@@ -70,7 +72,7 @@ const [plants, setPlants] = React.useState([]);
   }
 
   return (
-    <div style={{backgroundColor: "rgb(204, 253, 194)"}}>
+    <div style={{ backgroundColor: "rgb(204, 253, 194)" }}>
       <h1>Tropical and Exotic Fruit Trees</h1>
       <div
         className="cards-container"
@@ -84,7 +86,6 @@ const [plants, setPlants] = React.useState([]);
           justifyContent: "space-between",
         }}
       >
-        
         {plants?.map((plant) => (
           <PlantsCard
             key={plant._id}
@@ -93,6 +94,7 @@ const [plants, setPlants] = React.useState([]);
             propagation={
               plant.pollination || plant.propergation || plant.description
             }
+            photo={plant.photo}
             feed={plant.feed}
             handleFertilize={() => handleFertilize(plant._id)}
             handleWater={() => handleWater(plant._id)}
@@ -101,7 +103,7 @@ const [plants, setPlants] = React.useState([]);
         ))}
       </div>
 
-      <div className="add-plant-container"> 
+      <div className="add-plant-container">
         <Row>
           <Form className="plant-form" onSubmit={handleSubmit}></Form>
         </Row>
@@ -134,6 +136,10 @@ const [plants, setPlants] = React.useState([]);
             name="propagation"
             placeholder="Enter propagation method"
           />
+        </FormGroup>
+        <FormGroup className="mb-3">
+          <Label for="photo">Photo:</Label>
+          <Input type="text" id="photo" name="photo" />
         </FormGroup>
         <Button
           type="submit"

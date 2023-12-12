@@ -3,7 +3,8 @@ import React from "react";
 import { Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
 // this is the function to handle the submit of the form to add a new plant to the database and the page
 export default function PlantsCard(props) {
-  const { plants, setPlants, plant, genus, species, propagation } = props;
+  const { plants, setPlants, plant, genus, species, propagation, photo } =
+    props;
 
   function updateFeed(plantId, type) {
     const currentDate = new Date();
@@ -57,9 +58,14 @@ export default function PlantsCard(props) {
     <div className="plant-card">
       <Card style={cardStyle}>
         <CardBody>
-          {/* {Image && (
-            <Image src={Image} alt={`${species} plant`} style={{ borderRadius: "8px", marginBottom: "10px" }} />
-          )} */}
+          {photo && (
+            <img
+              src={photo}
+              alt={`${species} plant`}
+              style={{ borderRadius: "8px", marginBottom: "10px", width: "300px" }}
+            />
+          )}
+
           <CardTitle className="text-center" style={{ fontSize: 17 }}>
             Species: {species}
           </CardTitle>
@@ -88,12 +94,13 @@ export default function PlantsCard(props) {
           <div className="d-flex justify-content-center mt-2">
             {fertilized && (
               <>
-                <p style={{ fontSize: 14, marginLeft: "10px" }}>Fertilized!</p>
+                <p style={{ fontSize: 14, marginLeft: "10px" }}>💩💩💩</p>
               </>
             )}
+
             {watered && (
               <>
-                <p style={{ fontSize: 14, marginLeft: "10px" }}>Watered!</p>
+                <p style={{ fontSize: 14, marginLeft: "10px" }}>💧💧💧</p>
               </>
             )}
           </div>
