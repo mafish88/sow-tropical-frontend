@@ -4,10 +4,11 @@ import HomePage from './pages/HomePage';
 import PlantsPage from './pages/PlantsPage';
 import Nav from './components/Nav';
 import PlantsCard from './components/PlantsCard';
-import Footer from './components/Footer';
 import './App.css';
 
 export default function App() {
+
+  //usestate from plants page 
   return (
     <BrowserRouter>
       <Routes>
@@ -15,7 +16,6 @@ export default function App() {
         <Route path="/plants" element={<PlantsPage />} />
         <Route path="/plants/:id" element={<PlantsCard />} />
         <Route path="/login" element={<Nav />} />
-        <Route path="/" element={<Footer />} />
       </Routes>
      
     </BrowserRouter>

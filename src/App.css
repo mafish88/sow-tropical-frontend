@@ -1,0 +1,30 @@
+
+.home-page{
+      background-color: rgb(204, 253, 194);
+      /* flex image */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      /* make image whole page*/
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+
+
+
+}
+.logo{
+   width:85vw
+
+
+
+}
+
+.card{
+   background-color: rgb(204, 253, 194);
+ 
+}
+
